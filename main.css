@@ -1,0 +1,118 @@
+/* Reset and body */
+body {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  background: radial-gradient(circle at top right, #001f3f, #000);
+  color: #fff;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Navigation styles */
+.main-nav {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+}
+
+.main-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 15px;
+}
+
+.main-nav a {
+  background: none;            /* Removed background */
+  color: #00ffe7;              /* Bright text color */
+  padding: 8px 12px;           /* Smaller padding */
+  border-radius: 0;            /* No rounded corners */
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: inline-block;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffe7;
+  outline: none;
+}
+
+/* Hero */
+.hero {
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-conic-gradient(from 0deg, #0ff, #00f, #0ff 20%);
+  animation: spin 20s linear infinite;
+  z-index: -1;
+  filter: blur(160px);
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5em;
+  color: #00ffe7;
+}
+
+.hero h2 {
+  font-size: 1.5rem;
+  margin-bottom: 2em;
+  /* Remove original color, controlled in .rotating-words */
+}
+
+.rotating-words {
+  color: #aaa;
+  font-size: 1.5rem;
+  display: inline-block;
+  min-width: 100px; /* Prevent layout shift when words change */
+  text-align: center;
+}
+
+.splash-shape {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(to right, #00ffe7, transparent);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 60%);
+}
+
+/* Footer */
+footer {
+  flex-shrink: 0;
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(90deg, #001f3f, #002a5c);
+  color: #aaa;
+  font-size: 0.9rem;
+}
