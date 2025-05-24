@@ -1,4 +1,4 @@
-/* Reset and body */
+/* Reset and base styles */
 body {
   margin: 0;
   font-family: 'Orbitron', sans-serif;
@@ -8,7 +8,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  position: relative;
 }
 
 /* Navigation styles */
@@ -28,10 +27,8 @@ body {
 }
 
 .main-nav a {
-  background: none;            /* Removed background */
-  color: #00ffe7;              /* Bright text color */
-  padding: 8px 12px;           /* Smaller padding */
-  border-radius: 0;            /* No rounded corners */
+  color: #00ffe7;
+  padding: 8px 12px;
   font-weight: bold;
   font-size: 1.1rem;
   text-decoration: none;
@@ -46,7 +43,7 @@ body {
   outline: none;
 }
 
-/* Hero */
+/* Hero section */
 .hero {
   position: relative;
   flex: 1 0 auto;
@@ -78,23 +75,28 @@ body {
 }
 
 .hero h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5em;
+  font-size: 6rem;
+  margin-bottom: 0.3em;
   color: #00ffe7;
 }
 
 .hero h2 {
-  font-size: 1.5rem;
-  margin-bottom: 2em;
-  /* Remove original color, controlled in .rotating-words */
+  font-size: 3rem;
+  margin-bottom: 1.5em;
 }
 
 .rotating-words {
-  color: #aaa;
-  font-size: 1.5rem;
+  color: #00ffe7;
+  font-size: 3rem;
   display: inline-block;
-  min-width: 100px; /* Prevent layout shift when words change */
+  min-width: 200px;
   text-align: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.rotating-words.fade-out {
+  opacity: 0;
 }
 
 .splash-shape {
