@@ -3,24 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tanuj</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Tanuj Dontaraju</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Orbitron&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
   <nav class="main-nav">
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      &#9776;
+    </button>
     <ul>
-      <li><a href="#home">Tanuj</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#connect">Contact Me</a></li>
-      <li><a href="#resume">Resume</a></li>
+      <li><a href="https://github.com/tanujdontaraju" target="_blank" rel="noopener noreferrer">Tanuj</a></li>
+      <li><a href="https://linkedin.com/in/tanujdontaraju" target="_blank" rel="noopener noreferrer">Work</a></li>
+      <li><a href="Tanuj_Dontaraju_Resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a></li>
     </ul>
   </nav>
 
-  <section class="hero" id="home">
-    <h1>I'm Tanuj!</h1>
-    <h2><span class="rotating-words">Coder</span></h2>
-    <div class="splash-shape"></div>
+  <!-- Social icons top right -->
+  <div class="social-icons">
+    <a href="https://instagram.com/tanujdontaraju" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" /></span>
+    </a>
+    <a href="mailto:tanujdontaraju@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Email">
+      <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/561/561127.png" alt="Email" /></span>
+    </a>
+    <a href="https://github.com/tanujdontaraju" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <span class="icon-link"><img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub" /></span>
+    </a>
+  </div>
+
+  <section class="hero">
+    <div class="hero-left">
+      <div class="signature">
+        Tanuj<br />Dontaraju
+      </div>
+    </div>
+    <div class="hero-right">
+      <h2>
+        I am a
+        <span class="rotating-words">
+          <span class="word active">leader</span>
+          <span class="word">winner</span>
+          <span class="word">coder</span>
+          <span class="word">innovator</span>
+        </span>
+      </h2>
+      <p>Passionate about technology, innovation, and problem-solving. Let's build something great together.</p>
+      <a href="Tanuj_Dontaraju_Resume.pdf" class="cta-button" target="_blank">Resume</a>
+    </div>
   </section>
 
   <footer>
@@ -28,19 +58,13 @@
   </footer>
 
   <script>
-    const words = ["Coder", "Innovator", "Winner"];
-    let index = 0;
-    const rotatingSpan = document.querySelector(".rotating-words");
+    // Toggle nav menu on small screens
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.main-nav ul');
 
-    setInterval(() => {
-      rotatingSpan.classList.add("fade-out");
-
-      setTimeout(() => {
-        index = (index + 1) % words.length;
-        rotatingSpan.textContent = words[index];
-        rotatingSpan.classList.remove("fade-out");
-      }, 500); // Should match CSS transition
-    }, 3000);
+    navToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('nav-open');
+    });
   </script>
 </body>
 </html>
