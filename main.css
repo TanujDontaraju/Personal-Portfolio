@@ -65,7 +65,6 @@ body {
   outline: none;
 }
 
-
 .nav-toggle {
   display: none;
   font-size: 2rem;
@@ -207,7 +206,7 @@ footer {
   top: 20px;
   right: 20px;
   display: flex;
-  gap: 24px; /* increased spacing */
+  gap: 24px;
   z-index: 15;
 }
 
@@ -309,6 +308,11 @@ footer {
   .hero-right p {
     font-size: 1rem;
   }
+
+  .cta-button {
+    align-self: center;
+  }
+}
 
   .cta-button {
     align-self: center;
