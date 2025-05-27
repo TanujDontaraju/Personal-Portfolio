@@ -13,6 +13,28 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  position: relative;
+  z-index: 0;
+}
+
+/* Full-page animated glow effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: repeating-conic-gradient(from 0deg, #0ff, #00f, #0ff 20%);
+  animation: spin 20s linear infinite;
+  z-index: -1;
+  filter: blur(160px);
+  pointer-events: none;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* Navigation styles */
@@ -82,29 +104,11 @@ body {
   align-items: center;
   justify-content: center;
   gap: 80px;
-  height: 100vh;
+  min-height: 100vh; /* changed from height to min-height */
   padding: 80px 60px 60px;
   position: relative;
-  overflow: hidden;
   text-align: left;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: repeating-conic-gradient(from 0deg, #0ff, #00f, #0ff 20%);
-  animation: spin 20s linear infinite;
-  z-index: -1;
-  filter: blur(160px);
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  background: transparent;
 }
 
 .hero-left {
@@ -130,12 +134,15 @@ body {
   margin-left: 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;       /* center horizontally */
   justify-content: center;
+  text-align: center;        /* center text */
+  gap: 20px;                 /* spacing between heading and button */
 }
 
 .hero-right h2 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
+  font-size: 3.5rem;
+  margin-bottom: 0;          /* remove bottom margin */
   color: #fff;
   line-height: 1.2;
   white-space: nowrap;
@@ -182,13 +189,50 @@ body {
   text-decoration: none;
   font-weight: bold;
   transition: background 0.3s, color 0.3s;
-  align-self: flex-start;
+  align-self: center;        /* center the button */
+  margin-top: 0;
 }
 
 .cta-button:hover {
   background-color: #00ffe7;
   color: #000;
 }
+
+/* Generic section spacing */
+section {
+  margin: 20px 30px;
+}
+
+/* About Me section styles */
+.about-me {
+  padding: 30px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #ccc;
+}
+
+.about-me h1 {
+  font-size: 3rem;
+  color: #00ffe7;
+  position: relative;
+  display: inline-block;   /* key for width to shrink-wrap text */
+  margin-bottom: 20px;
+  padding-bottom: 8px;     /* space for underline */
+}
+
+.about-me h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -50px;             /* extend 15px left */
+  width: calc(100% + 100px); /* extend 15px left + 15px right */
+  height: 3px;
+  background-color: #00ffe7;
+  border-radius: 2px;
+}
+
 
 /* Footer */
 footer {
@@ -251,14 +295,13 @@ footer {
     z-index: 20;
   }
 
-  /* Move nav menu dropdown to the right, below GitHub icon */
   .main-nav ul {
     display: none;
     flex-direction: column;
     background: #001f3f;
     position: fixed;
-    top: 70px; /* a bit below top */
-    right: 20px; /* aligned with social icons */
+    top: 70px;
+    right: 20px;
     border-radius: 8px;
     padding: 10px 20px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.5);
@@ -289,6 +332,7 @@ footer {
     padding: 100px 30px 40px;
     text-align: center;
     gap: 40px;
+    margin-bottom: 20px;
   }
 
   .signature {
@@ -299,14 +343,18 @@ footer {
 
   .hero-right {
     margin-left: 0;
+    text-align: center;
+    align-items: center;
+    gap: 20px;
   }
 
   .hero-right h2 {
+    font-size: 2.5rem;
     white-space: normal;
-    font-size: 2rem;
   }
 
   .rotating-words {
+    font-size: 2.5rem;
     height: auto;
     display: inline;
   }
@@ -317,5 +365,9 @@ footer {
 
   .cta-button {
     align-self: center;
+  }
+
+  section {
+    margin: 30px 20px;
   }
 }
