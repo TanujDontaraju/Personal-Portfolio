@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Merriweather Sans', sans-serif;
   background: radial-gradient(circle at top right, #001f3f, #000);
   color: #fff;
   overflow-x: hidden;
@@ -141,22 +141,25 @@ body::before {
 }
 
 .hero-right h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   margin-bottom: 0;
   color: #fff;
   line-height: 1.2;
   white-space: nowrap;
+  padding-left: 350px;
 }
 
 .rotating-words {
   position: relative;
-  display: inline;
-  height: 1.6em;
-  overflow: visible;
+  display: inline-block;
+  width: 10ch;
+  height: 1em;
+  overflow: hidden;
   vertical-align: baseline;
   font-weight: bold;
   color: #00ffe7;
-  line-height: 1.6em;
+  text-align: left;
+  line-height: inherit;
 }
 
 .rotating-words .word {
@@ -167,6 +170,7 @@ body::before {
   transform: translateY(100%);
   transition: opacity 0.5s ease, transform 0.5s ease;
   white-space: nowrap;
+  line-height: 1em;
 }
 
 .rotating-words .word.active {
@@ -182,15 +186,17 @@ body::before {
 }
 
 .cta-button {
-  padding: 10px 20px;
+  margin-left: 100px;
+  padding: 20px 50px;
   border: 2px solid #00ffe7;
   border-radius: 8px;
   color: #00ffe7;
   text-decoration: none;
   font-weight: bold;
+  font-size: 1.5rem;
   transition: background 0.3s, color 0.3s;
+  margin-top: 20px;
   align-self: center;
-  margin-top: 0;
 }
 
 .cta-button:hover {
@@ -198,16 +204,18 @@ body::before {
   color: #000;
 }
 
-/* Generic section spacing */
+/* Section spacing */
 section {
   margin: 20px 30px;
 }
 
-/* About Me section styles */
+/* About Me section */
 .about-me {
-  padding: 30px 20px;
+  padding: 10px 20px;
+  margin-top: -20px;
   max-width: 900px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 1.1rem;
   line-height: 1.6;
   color: #ccc;
@@ -218,19 +226,82 @@ section {
   color: #00ffe7;
   position: relative;
   display: inline-block;
-  margin-bottom: 20px;
-  padding-bottom: 8px;
+  margin-bottom: 10px;
+  padding-bottom: 4px;
 }
 
 .about-me h1::after {
   content: '';
   position: absolute;
   bottom: 0;
-  left: -50px;
-  width: calc(100% + 100px);
-  height: 3px;
+  left: -20px;
+  width: calc(100% + 40px);
+  height: 2px;
   background-color: #00ffe7;
   border-radius: 2px;
+}
+
+/* Info boxes container */
+.info-boxes {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+/* Info box styles */
+.info-box {
+  background: transparent;
+  border: 2px solid #00ffe7;
+  border-radius: 12px;
+  padding: 30px 25px;
+  width: 350px;
+  height: 550px;
+  color: #00ffe7;
+  font-size: 1.1rem;
+  box-shadow: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.info-box h3,
+.info-box p {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  user-select: none;
+  margin: 0;
+}
+
+.info-box:hover {
+  background-color: #00ffe7;
+  box-shadow: 0 0 20px #00ffe7;
+  color: #000;
+}
+
+.info-box:hover h3,
+.info-box:hover p {
+  opacity: 1;
+  pointer-events: auto;
+  user-select: auto;
+}
+
+.info-box h3 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-decoration: underline;
+}
+
+.info-box p {
+  line-height: 1.4;
 }
 
 /* Footer */
@@ -243,11 +314,11 @@ footer {
   font-size: 0.9rem;
 }
 
-/* Social icons top right */
+/* Social icons */
 .social-icons {
   position: fixed;
   top: 20px;
-  right: 20px;
+  right: 40px;
   display: flex;
   gap: 24px;
   z-index: 15;
@@ -278,183 +349,8 @@ footer {
 }
 
 .social-icons a img {
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   filter: brightness(0) invert(1);
   display: block;
-}
-
-/* Responsive for tablets and smaller */
-@media (max-width: 768px) {
-  .nav-toggle {
-    display: block;
-    position: fixed;
-    top: 20px;
-    right: 20px; /* Moved toggle button to the right */
-    z-index: 20;
-  }
-
-  .main-nav ul {
-    display: none;
-    flex-direction: column;
-    background: #001f3f;
-    position: fixed;
-    top: 70px;
-    right: 20px;
-    border-radius: 8px;
-    padding: 10px 20px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    min-width: 180px;
-    z-index: 20;
-    max-height: 60vh;
-    overflow-y: auto;
-  }
-
-  .main-nav ul.nav-open {
-    display: flex;
-  }
-
-  .main-nav li {
-    margin-bottom: 10px;
-  }
-
-  .main-nav li:last-child {
-    margin-bottom: 0;
-  }
-
-  .main-nav a {
-    padding: 8px 0;
-    font-size: 1.1rem;
-    white-space: nowrap;
-  }
-
-  .hero {
-    flex-direction: column;
-    padding: 100px 30px 40px;
-    text-align: center;
-    gap: 40px;
-    margin-bottom: 20px;
-  }
-
-  .signature {
-    font-size: 6rem;
-    margin-left: 0;
-    text-align: center;
-  }
-
-  .hero-right {
-    margin-left: 0;
-    text-align: center;
-    align-items: center;
-    gap: 20px;
-  }
-
-  .hero-right h2 {
-    font-size: 2.5rem;
-    white-space: normal;
-  }
-
-  .rotating-words {
-    font-size: 2.5rem;
-    height: auto;
-    display: inline;
-  }
-
-  .hero-right p {
-    font-size: 1rem;
-  }
-
-  .cta-button {
-    align-self: center;
-  }
-
-  section {
-    margin: 30px 20px;
-  }
-
-  /* Hide social icons on smaller screens */
-  .social-icons {
-    display: none;
-  }
-}
-
-/* Very small screens below 400px */
-@media (max-width: 399px) {
-  /* Reduce spacing between elements */
-  .hero {
-    gap: 20px !important;
-    padding: 60px 20px 30px !important;
-  }
-
-  .hero-right {
-    gap: 10px !important;
-  }
-
-  /* Hide original h2 text but keep layout */
-  .hero-right h2 {
-    font-size: 1.8rem !important;
-    line-height: 1.2 !important;
-    white-space: normal !important;
-    text-align: center !important;
-    font-weight: normal !important;
-    position: relative;
-    color: transparent !important; /* hide original text */
-  }
-
-  /* Show "I am a" on its own line above rotating words */
-  .hero-right h2::before {
-    content: "I am a";
-    display: block;
-    margin-bottom: 0.15em;
-    color: #fff;
-    font-weight: normal;
-    position: relative;
-  }
-
-  /* Keep rotating words container visible and block-level */
-  .rotating-words {
-    display: inline-block !important;
-    margin: 0 auto !important;
-    font-weight: bold !important;
-    color: #00ffe7 !important;
-    white-space: nowrap !important;
-    position: relative;
-    height: 1.6em; /* keep fixed height for smooth animation */
-    overflow: visible;
-  }
-
-  /* DO NOT force all words visible here! Let JS handle opacity & positioning */
-  .rotating-words .word {
-    position: absolute;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transform: translateY(100%);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    white-space: nowrap;
-  }
-
-  /* The active word gets visible by JS */
-  .rotating-words .word.active {
-    opacity: 1;
-    transform: translateY(0);
-    position: relative;
-  }
-
-  .cta-button {
-    padding: 8px 16px !important;
-    font-size: 1rem !important;
-  }
-
-  .about-me {
-    padding: 20px 15px !important;
-    font-size: 1rem !important;
-  }
-
-  /* Smaller and centered signature */
-  .signature {
-    font-size: 4.5rem !important;
-    text-align: center !important;
-    margin-left: 0 !important;
-  }
 }
