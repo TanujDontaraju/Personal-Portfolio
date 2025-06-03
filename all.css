@@ -514,10 +514,10 @@ footer {
 .projects-section h1::after {
   content: '';
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 370px;    /* Make this wider for longer underline */
+  width: 570px;    /* Make this wider for longer underline */
   height: 3px;
   background-color: #00ffe7;
   border-radius: 2px;
@@ -534,7 +534,7 @@ footer {
   width: 30%;
   min-width: 450px;
   height: 650px;
-  background: transparent; /* or your chosen default */
+  background: transparent;
   border: 2px solid #00ffe7;
   border-radius: 12px;
   padding: 30px 25px;
@@ -567,6 +567,7 @@ footer {
   font-weight: bold;
   z-index: 2;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  line-height: 1.8;
 }
 
 /* Hide details initially */
@@ -577,7 +578,7 @@ footer {
   right: 0;
   bottom: 0;
   padding: 30px 25px;
-  background-color: #00ffe7;
+  background-color: white;  /* Changed from neon blue to white */
   color: #000;
   opacity: 0;
   transform: translateY(20px);
@@ -598,6 +599,13 @@ footer {
   pointer-events: none;
 }
 
+.project-card:hover .project-title,
+.project-card:hover .project-details {
+  word-spacing: 5px;
+  line-height: 1.6;
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
 .project-card:hover .project-details {
   opacity: 1;
   transform: translateY(0);
@@ -605,33 +613,14 @@ footer {
 }
 
 /* On hover card background and scale */
-.project-card:hover {
-  background: linear-gradient(90deg, #000068, #000053);
-  transform: scale(1.05);
-  box-shadow: 0 10px 20px rgba(0, 255, 231, 0.4);
-  border-color: #00ffe7;
-  color: #00ffe7;
-}
-
-
-/* On hover, show details and animate background */
 .project-card:hover,
 .project-card:focus,
 .project-card:active {
-  background: linear-gradient(90deg, #000033, #000022) !important; /* darker navy blue gradient */
+  background: white;  /* White background on hover/focus/active */
   transform: scale(1.05);
   box-shadow: 0 10px 20px rgba(0, 255, 231, 0.4);
   border-color: #00ffe7;
   color: #00ffe7;
-}
-
-/* Reveal details on hover */
-.project-card:hover .details,
-.project-card:focus .details,
-.project-card:active .details {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 /* Keep title color on hover */
@@ -640,6 +629,102 @@ footer {
 .project-card:active h3 {
   color: #00ffe7;
 }
+
+.project-button {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: black;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+
+  background-image: linear-gradient(90deg, black, black);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition: 
+    opacity 0.3s ease,
+    background-size 0.4s ease;
+}
+
+.project-card:hover .project-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-button:hover {
+  background-size: 100% 2px;
+  text-decoration: none;
+}
+
+.project-button,
+.github-button {
+  position: absolute;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 4;
+  color: black; /* Keep text black */
+
+  /* Black underline animation */
+  background-image: linear-gradient(90deg, black, black);
+  background-position: 0% 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 2px;
+  transition:
+    opacity 0.3s ease,
+    background-size 0.4s ease;
+}
+
+.project-button {
+  bottom: 20px;
+  right: 20px;
+}
+
+.github-button {
+  bottom: 20px;
+  left: 20px;
+}
+
+.project-card:hover .project-button,
+.project-card:hover .github-button {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.project-button:hover,
+.github-button:hover {
+  background-size: 100% 2px;
+  text-decoration: none;
+  color: black; /* Reinforce black text on hover */
+}
+
+/* Target the middle project card's image (second card) */
+.project-card:nth-child(2) .project-image {
+  width: 85%; /* Adjust width as needed */
+  max-height: 250px;
+  object-fit: contain;
+}
+
+/* Make only the last project-card image smaller */
+.project-card:last-child .project-image {
+  width: 200%; /* adjust as needed */
+  max-height: 300px;
+  object-fit: contain;
+}
+
 
 .project-link {
   position: relative;
@@ -687,4 +772,59 @@ footer {
   gap: 200px;              /* Space between cards */
   justify-content: center; /* Center the whole row */
   padding: 0 20px;         /* Optional padding on sides */
+}
+
+.project-image {
+  max-width: 100%; /* makes sure image never exceeds its container */
+  height: auto;
+  width: 1500px; /* or any size you want */
+  margin-bottom: 50px;
+}
+
+.more-projects {
+  text-align: center;
+  margin-top: 120px; /* your existing */
+  padding: 30px;
+  color: #00ffe7;
+  margin-bottom: 60px; /* add this to create space below */
+}
+
+.more-projects h2 {
+  font-size: 2.5rem;
+  padding-bottom: 5px;  /* closer underline to text */
+  border-bottom: 3px solid #00ffe7;
+  display: inline-block;
+  width: 300px;
+  margin: 0 auto 25px auto; /* centers and adds 25px space below underline */
+  text-align: center;
+}
+
+.more-projects p {
+  font-size: 1.2rem;
+}
+
+.more-projects a {
+  color: #00ffe7;
+  text-decoration: underline;
+  transition: color 0.3s;
+}
+
+.more-projects a:hover {
+  color: #ffffff;
+}
+
+.more-projects a.github-link {
+  color: #00ffe7;
+  text-decoration: none; /* no underline initially */
+  background-image: linear-gradient(90deg, #00ffe7, #00ffe7);
+  background-size: 0% 2px;
+  background-repeat: no-repeat;
+  background-position: left bottom;
+  transition: background-size 0.3s ease;
+  padding-bottom: 2px; /* space for underline */
+}
+
+.more-projects a.github-link:hover {
+  background-size: 100% 2px; /* animate underline left to right */
+  color: #ffffff; /* optional: change color on hover */
 }
